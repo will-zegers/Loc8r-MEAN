@@ -1,3 +1,7 @@
+console.log("[+] Starting Loc8r app!");
+
+require ('./_app_server/models/db');
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
