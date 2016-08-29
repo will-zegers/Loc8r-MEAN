@@ -10,8 +10,8 @@ db.locations.save([{
     "Private rooms"
   ],
   "coords" : [
-    -117.2397564,
-    32.8811391
+    -117.2375732,
+    32.8811083
   ],
   "openingTimes" : [
     {
@@ -44,7 +44,7 @@ db.locations.save([{
       "author" : "Will Zegers",
       "_id" : ObjectId(),
       "rating" : 4,
-      "timestamp" : new Date("Sep 4, 2016"),
+      "createdOn" : new Date("Sep 4, 2016"),
       "reviewText" : "Crowded at time, and wifi can be spotty in some areas. Love the new cafe, tho!"
     }
   ]
@@ -59,8 +59,8 @@ db.locations.save([{
     "Premuim wifi"
   ],
   "coords" : [
-    -117.2313128,
-    32.8666768
+    -117.232182,
+    32.865962
   ],
   "openingTimes" : [
     {
@@ -81,14 +81,14 @@ db.locations.save([{
       "author" : "Chuck Finley",
       "_id" : ObjectId(),
       "rating" : 2,
-      "timestamp" : new Date("Aug 16, 2016"),
+      "createdOn" : new Date("Aug 16, 2016"),
       "reviewText" : "Good wifi, but hard to get a seat sometimes."
     },
     {
       "author" : "Paul Atreides",
       "_id" : ObjectId(),
       "rating" : 4,
-      "timestamp" : new Date("Aug 11, 2016"),
+      "createdOn" : new Date("Aug 11, 2016"),
       "reviewText" : "Good spice lattes and reliable wifi. And water is free!."
     }
   ]
@@ -103,8 +103,8 @@ db.locations.save([{
     "24 hours"
   ],
   "coords" : [
-    -117.1241786,
-    32.7632441
+    -117.1219899,
+    32.7632396
   ],
   "openingTimes" : [
     {
@@ -119,7 +119,7 @@ db.locations.save([{
       "author" : "J. P. Sartre",
       "id" : ObjectId(),
       "rating" : 5,
-      "timestamp" : new Date("Aug 2, 2016"),
+      "createdOn" : new Date("Aug 2, 2016"),
       "reviewText" : "Tres bien! Et il est ouvert 24 heures!"
     }
   ]
@@ -133,8 +133,8 @@ db.locations.save([{
     "Food"
   ],
   "coords" : [
-    -117.1954925,
-    32.7338051
+    -117.201157,
+    32.732971
   ],
   "openingTimes" : [
     {

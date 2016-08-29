@@ -20,6 +20,8 @@ var theEarth = (function() {
 module.exports.locationsListByDistance = function(req, res) {
   var lng = parseFloat(req.query.lng);
   var lat = parseFloat(req.query.lat);
+  var maxDistance = parseFloat(req.query.maxDistance);
+
   if (!lat || !lng) {
     sendJsonResponse(res, 404, {"message" : "No geo-coordinates in request"})
     return;
@@ -32,7 +34,7 @@ module.exports.locationsListByDistance = function(req, res) {
 
   var geoOptions = {
     spherical: true,
-    maxDistance: theEarth.getRadsFromDistance(10),
+    maxDistance: theEarth.getRadsFromDistance(maxDistance),
     num: 10
   };
   Loc.geoNear(point, geoOptions, function(err, results, stats) {
@@ -52,7 +54,7 @@ module.exports.locationsListByDistance = function(req, res) {
         _id: doc.obj._id
       });
     });
-    sendJsonResponse(res, 404, locations);
+    sendJsonResponse(res, 200, locations);
   });
 };
 
@@ -84,7 +86,6 @@ module.exports.locationsCreate = function(req, res) {
 };
 
 module.exports.locationsReadOne = function(req, res) {
-  console.log(Loc);
   if (req.params && req.params.locationid) {
     Loc
       .findById(req.params.locationid)

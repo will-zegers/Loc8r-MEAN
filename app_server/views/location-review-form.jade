@@ -7,7 +7,9 @@ block content
 
   .row
     .col-xs-12.col-sm-8
-      form.form-horizontal(action="/location", method="et", role="form")
+      - if (error == "val")
+        .alert.alert-danger(roles="alert") Name and rating field are required, please try again
+      form#addReview.form-horizontal(action="", method="post", role="form")
         .form-group
           label.col-xs-10.col-sm-2.control-label(for="name") Name
           .col-xs-12.col-sm-10
@@ -26,5 +28,5 @@ block content
           label.col-xs-10.col-sm-2.control-label(for="review") Review
           .col-sm-10
             textarea#review.form-control(name="review",rows="5")
-        button.btn.btn-primary.pull-right Add my review
+        button#submit.btn.btn-primary.pull-right Add my review
     .col-xs-12.col-sm-4

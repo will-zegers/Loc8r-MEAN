@@ -3,11 +3,12 @@ var Loc = mongoose.model('Location');
 
 var doAddReview = function(req, res, location) {
   if(!location) {
+    console.log("Here");
     sendJsonResponse(res, 404, {"message" : "location not found"});
     return;
   }
   location.reviews.push({
-    author: req.body.name,
+    author: req.body.author,
     rating: req.body.rating,
     reviewText: req.body.reviewText
   });
@@ -20,13 +21,12 @@ var doAddReview = function(req, res, location) {
       thisReview = location.reviews[location.reviews.length - 1];
       sendJsonResponse(res, 201, thisReview);
     } else {
-      sendJsonResponse(res, 404, err);
+      sendJsonResponse(res, 400, err);
     }
   });
 }
 
 var updateAverageRating = function(locationId) {
-  console.log("[*] updateAverageRating");
   Loc
     .findById(locationId)
     .select('rating reviews')
@@ -38,7 +38,6 @@ var updateAverageRating = function(locationId) {
 }
 
 var doSetAverageRating = function(location) {
-  console.log("[*] doSetAverageRating");
   var i, reviewCount, ratingAverage, ratingTotal;
   if (location.reviews && location.reviews.length > 0) {
     reviewCount = location.reviews.length;
@@ -89,7 +88,6 @@ module.exports.reviewsReadOne = function(req, res) {
         }
         if (location.reviews && location.reviews.length > 0) {
           review = location.reviews.id(req.params.reviewid);
-          console.log(location.reviews);
           if (!review) {
             sendJsonResponse(res, 404, {"message" : "reviewid not found"});
           } else {
@@ -131,7 +129,6 @@ module.exports.reviewsUpdateOne = function(req, res) {
         return;
       }
       if (location.reviews && location.reviews.length > 0) {
-        console.log("Here");
         thisReview = location.reviews.id(req.params.reviewid);
         if (!thisReview) {
           sendJsonResponse(res, 404, {"message" : "reviewid not found"});
