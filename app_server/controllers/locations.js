@@ -51,50 +51,50 @@ var getLocationInfo = function(req, res, callback) {
 }
 
 /* GET home page */
-var renderHomepage = function(req, res, responseBody) {
-  var message;
-  if (!(responseBody instanceof Array)) {
-    message = "API lookup error";
-    responseBody = [];
-  } else {
-    if (!responseBody.length) {
-      message = "No places nearby";
-    }
-  }
+var renderHomepage = function(req, res) {
+  // var message;
+  // if (!(responseBody instanceof Array)) {
+  //   message = "API lookup error";
+  //   responseBody = [];
+  // } else {
+  //   if (!responseBody.length) {
+  //     message = "No places nearby";
+  //   }
+  // }
   res.render('locations-list', { 
     title: 'Loc8r - find a place to work with wifi',
     pageHeader: {
       title: 'Loc8r',
       strapline: 'Find places to work with wifi near you!'
     },
-    locations: responseBody,
+    // locations: responseBody,
     sidebar: "Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake, or a pint? Let Loc8r help you find the place you're looing for.",
-    message: message
+    // message: message
   });
 };
 
 module.exports.homelist = function(req, res) {
-  var requestOptions, path;
-  path = '/api/locations/';
-  requestOptions = {
-    url : apiOptions.server + path,
-    method : "GET",
-    json : {},
-    qs : {
-      lng : -117.2287834,
-      lat : 32.8680875,
-      maxDistance : 20
-    }
-  };
+  // var requestOptions, path;
+  // path = '/api/locations/';
+  // requestOptions = {
+  //   url : apiOptions.server + path,
+  //   method : "GET",
+  //   json : {},
+  //   qs : {
+  //     lng : -117.2287834,
+  //     lat : 32.8680875,
+  //     maxDistance : 20
+  //   }
+  // };
 
-  request(requestOptions, function(err, response, body) {
-    if (response.statusCode == 200) {
-      for (var i = 0; i < body.length; i++) {
-        body[i].distance = _formatDistance(body[i].distance);
-      }
-    }
-    renderHomepage(req, res, body);
-  });
+  // request(requestOptions, function(err, response, body) {
+  //   if (response.statusCode == 200) {
+  //     for (var i = 0; i < body.length; i++) {
+  //       body[i].distance = _formatDistance(body[i].distance);
+  //     }
+  //   }
+    renderHomepage(req, res);
+  // });
 };
 
 /* GET 'Locations info' page */
@@ -123,7 +123,8 @@ var renderReviewForm = function(req, res, responseData) {
   res.render('location-review-form', {
     title: 'Review ' + responseData.name + ' on Loc8r',
     pageHeader: {title: 'Review ' + responseData.name},
-    error: req.query.err
+    error: req.query.err,
+    url: req.originalUrl
   });
 }
 

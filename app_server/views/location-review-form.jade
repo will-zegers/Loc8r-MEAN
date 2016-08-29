@@ -9,7 +9,7 @@ block content
     .col-xs-12.col-sm-8
       - if (error == "val")
         .alert.alert-danger(roles="alert") Name and rating field are required, please try again
-      form#addReview.form-horizontal(action="", method="post", role="form")
+      form#addReview.form-horizontal(action="#{url}", method="post", role="form")
         .form-group
           label.col-xs-10.col-sm-2.control-label(for="name") Name
           .col-xs-12.col-sm-10

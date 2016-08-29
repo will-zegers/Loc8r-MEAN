@@ -1,0 +1,17 @@
+doctype html
+html(ng-app="myApp")
+  head
+    meta(charset="utf-8")
+    title Angular binding test
+    script(src="/javascripts/angular.min.js")
+  body(ng-controller="myController")
+    input(ng-model="myInput")
+    h1 Hello {{ myInput }}
+    script.
+      var myController = function($scope) {
+        $scope.myInput = 'world!';
+      };
+
+      angular
+        .module('myApp', [])
+        .controller('myController', myController);
