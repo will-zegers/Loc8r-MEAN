@@ -9,6 +9,7 @@ db.locations.save([{
     "Food",
     "Private rooms"
   ],
+  "2dsphereIndexVersion" : 1,
   "coords" : [
     -117.2375732,
     32.8811083
@@ -62,6 +63,7 @@ db.locations.save([{
     -117.232182,
     32.865962
   ],
+  "2dsphereIndexVersion" : 1,
   "openingTimes" : [
     {
       "days" : "Monday - Thursday",
@@ -106,6 +108,7 @@ db.locations.save([{
     -117.1219899,
     32.7632396
   ],
+  "2dsphereIndexVersion" : 1,
   "openingTimes" : [
     {
       "days" : "Everyday",
@@ -136,6 +139,7 @@ db.locations.save([{
     -117.201157,
     32.732971
   ],
+  "2dsphereIndexVersion" : 1,
   "openingTimes" : [
     {
       "days" : "Everyday",

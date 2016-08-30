@@ -9,3 +9,7 @@ module.exports.about = function(req, res) {
 module.exports.testbench = function(req, res) {
   res.render('testbench-page');
 }
+
+module.exports.angularApp = function(req, res) {
+  res.render('layout', { title : 'Loc8r' });
+}
