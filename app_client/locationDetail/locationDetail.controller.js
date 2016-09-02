@@ -1,9 +1,11 @@
 (function() {
   
-  locationDetailCtrl.$inject = ['$routeParams', '$uibModal', 'loc8rData'];
-  function locationDetailCtrl($routeParams, $uibModal, loc8rData) {
+  locationDetailCtrl.$inject = ['$routeParams', '$location', '$uibModal', 'loc8rData', 'authentication'];
+  function locationDetailCtrl($routeParams, $location, $uibModal, loc8rData, authentication) {
     var vm = this;
     vm.locationid = $routeParams.locationid;
+    vm.isLoggedIn = authentication.isLoggedIn();
+    vm.currentPage = $location.path();
     loc8rData.locationById(vm.locationid)
       .success(function(data) {
         vm.data = { location : data };

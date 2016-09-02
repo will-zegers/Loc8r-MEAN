@@ -8,7 +8,7 @@
     vm.onSubmit = function() {
 
       vm.formError = "";
-      if (!vm.formData || !vm.formData.name || !vm.formData.rating) {
+      if (!vm.formData /*|| !vm.formData.name*/ || !vm.formData.rating) {
         vm.formError = "Name and rating fields required, please try again!";
         return false;
       } else {
@@ -18,7 +18,7 @@
 
     vm.doAddReview = function(locationid, formData) {
       loc8rData.addReviewById(locationid, {
-        author : formData.name,
+        // author : formData.name,
         rating : formData.rating,
         reviewText : formData.reviewText
       })

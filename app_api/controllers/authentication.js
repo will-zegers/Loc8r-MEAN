@@ -25,7 +25,13 @@ module.exports.register = function(req, res) {
   user.save(function(err) {
     var token;
     if (err) {
-      sendJSONresponse(req, 404, err);
+      var errMsg;
+      if (err.code === 11000) {
+        errMsg = { 'message' : 'That email is already registered'};
+      } else {
+        errMsg = err;
+      }
+      sendJSONresponse(res, 404, errMsg);
     } else {
       token = user.generateJwt();
       sendJSONresponse(res, 200, {
@@ -41,21 +47,23 @@ module.exports.login = function(req, res) {
       'message' : 'All field required'
     });
   }
+
   passport.authenticate('local', function(err, user, info) {
+    console.log("Here");
     var token;
 
     if (err) {
-      sendJSONresponse(req, 404, err);
+      sendJSONresponse(res, 404, err);
       return;
     }
 
     if(user) {
       token = user.generateJwt();
-      sendJSONresponse(req, 200, {
+      sendJSONresponse(res, 200, {
         'token' : token
       });
     } else {
-      sendJSONresponse(req, 401, info);
+      sendJSONresponse(res, 401, info);
     }
-  });
+  })(req, res);
 }
